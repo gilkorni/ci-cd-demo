@@ -18,7 +18,6 @@ docker tag "$imageName" "${dockerUsername}/${imageName}:${tag}"
 Write-Host "📤 Pushing image to Docker Hub..."
 docker push "${dockerUsername}/${imageName}:${tag}"
 
-
 # STEP 4: Deploy with Helm
 Write-Host "🚀 Deploying to Kubernetes with Helm..."
 helm upgrade --install $releaseName $chartPath

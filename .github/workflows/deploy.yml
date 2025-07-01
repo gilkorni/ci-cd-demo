@@ -22,6 +22,14 @@ jobs:
         id: vars
         run: echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
+      - name: 📦 Install Python & test dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: ✅ Run unit tests
+        run: |
+          pytest  
+
       - name: 🏗️ Build Docker images (latest + versioned)
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/fastapi-demo:latest .
